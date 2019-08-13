@@ -1,0 +1,9 @@
+<h3>leaderboard</h3>
+
+{% for person in profiles %}
+name is
+  {{person.username}}
+  <br>
+  score is
+  {{person.score}}
+ {% endfor %}
