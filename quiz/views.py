@@ -41,19 +41,34 @@ def login_view(request):
 def logout(request):
 	logout(request)
 	return redirect('index')
+def logout(request):
+	logout(request)
+	return redirect('index')
 
 def leaderboard(request):
 	people=[]
 	profiles = Profile.objects.all()
 	for i in profiles:
-		muser = User.objects.get(id=i.user_id)
+		myuser = User.objects.get(id=i.user_id)
 		people.append({
-			'username':muser.username,
-			'score':i.score})
+			'username':myuser.username,
+			'score':i.score,
+			})
+	return render(request,'quiz/leaderboard.html',{'people':people})
+
+def get_question(request):
+	
+	user=User.objects.get(username=request.user.username)
+	
+	
+	return render(request,'quiz/quizpage.html',{'user':user})
+
+
+	
 			
         
 	
-	return render(request,'quiz/leaderboard.html',{'profiles':profiles})
+
 
 
 
