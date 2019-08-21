@@ -3,7 +3,7 @@ from .forms import RegistrationForm
 from django.contrib.auth import authenticate, login, logout
 from . import models
 from django.contrib.auth.models import User
-from .models import Profile,Rounds
+from .models import Profile,Question
 
 
 
@@ -59,9 +59,26 @@ def leaderboard(request):
 def get_question(request):
 	
 	user=User.objects.get(username=request.user.username)
+	round=Question.objects.get(round=user.profile.curr_round)
+	if request.method=='POST':
+		answers=request.POST['answers']
+		print(answers)
+		
+		if answers==round.ans:
+			print("correct")
+			user.profile.curr_round+=1
+			print(user.profile.curr_round)
+			
+			user.profile.score+=10
+			user.save()
+			return render(request,'quiz/quizpage.html',{'round':round})
+
+		else:
+			print("false")
+
 	
 	
-	return render(request,'quiz/quizpage.html',{'user':user})
+	return render(request,'quiz/quizpage.html',{'round':round})
 
 
 	

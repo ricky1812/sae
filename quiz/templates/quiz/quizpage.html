@@ -3,8 +3,17 @@
 <title>quizpage</title>
 <body>
 	<h1>quiz page</h1>
+	<form method="post" action="">
+		{% csrf_token %}
+
+	{{user.username}}<br>
+	{{round.id}}
+	{{round.question}}
+		<input type="text" placeholder="ur ans" name="answers">
+		<input type="submit">
+	</form>
+
 	
-	{{user.username}}
 
 
 </body>
