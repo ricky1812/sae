@@ -1,15 +1,16 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 from .forms import RegistrationForm
 from django.contrib.auth import authenticate, login, logout
 from . import models
 from django.contrib.auth.models import User
 from .models import Profile,Question
+from django.utils import timezone
 
 
 
 # Create your views here.
 def index(request):
-	return HttpResponse("This is the homepage")
+	return render(request,'quiz/index.html')
 
 def signup(request):
 	if request.method=='POST':
@@ -38,21 +39,21 @@ def login_view(request):
 			message='Invalid Login'
 	context={'message':message}
 	return render(request,'quiz/login.html',context)
-def logout(request):
+def signout(request):
 	logout(request)
-	return redirect('index')
-def logout(request):
-	logout(request)
-	return redirect('index')
+	url = reverse(":login")
+	return redirect(url, args=(),kwargs={}) 
+
 
 def leaderboard(request):
 	people=[]
-	profiles = Profile.objects.all()
+	profiles = Profile.objects.order_by("-score","submit_time")
 	for i in profiles:
 		myuser = User.objects.get(id=i.user_id)
 		people.append({
 			'username':myuser.username,
 			'score':i.score,
+			'time':i.submit_time,
 			})
 	return render(request,'quiz/leaderboard.html',{'people':people})
 
@@ -68,16 +69,11 @@ def get_question(request):
 			print("correct")
 			user.profile.curr_round+=1
 			print(user.profile.curr_round)
-			
 			user.profile.score+=10
-			user.save()
-			return render(request,'quiz/quizpage.html',{'round':round})
-
-		else:
-			print("false")
-
-	
-	
+			user.profile.submit_time=timezone.now()
+			print(user.profile.submit_time)
+			user.save()	
+			return redirect('get_question')
 	return render(request,'quiz/quizpage.html',{'round':round})
 
 

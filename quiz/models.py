@@ -2,11 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
+from datetime import datetime
 
 class Profile(models.Model):
 	user=models.OneToOneField(User, on_delete=models.CASCADE)
 	score=models.IntegerField(default=0)
 	curr_round=models.IntegerField(default=1)
+	submit_time =  models.DateTimeField(default=timezone.now())
 
 
 	
