@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+index page
+</title>
+<style>
+	
+body {
+  min-height: 450px;
+  height: 100vh;
+  margin: 0;  
+  background: radial-gradient(ellipse farthest-corner at center top, #f39264 0%, #f2606f 100%);
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;  
+}	
+.button{
+	cursor: pointer;
+}
+.hearderset{
+	padding-top: 200px;
+	box-sizing: border-box;
+}
+.hearderset h1{
+  font-size: 40px;
+    font-weight: bold;
+  }
+  .hearderset h3{
+  font-size: 25px;
+}
+
+  .hearderset h2{
+  font-size: 20px;
+  }
+.hearderset button {
+	background-color: white;
+	padding: 10px;
+	margin: 20px;
+	width: 120px;
+	border-radius: 20px;
+}
+
+.boximg{
+	position:absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+}
+.boximg li{
+	position: absolute;
+	display: block;
+	list-style:none;
+	width: 25px;
+	height: 25px;
+	background:rgba(255,255,255,0.2);
+	animation: animate 20s linear infinite;
+
+}
+.boximg li:nth-child(1){
+	left: 86%;
+	width: 80px;
+	height: 80px;
+    animation-delay: 0s;
+    bottom: -150px;
+}
+
+.boximg li:nth-child(2){
+	left: 12%;
+	width: 30px;
+	height: 30px;
+    animation-delay: 1.5s;
+    animation-duration: 10s;
+    bottom: -150px;
+}
+.boximg li:nth-child(4){
+	left: 42%;
+	width: 150px;
+	height: 150px;
+    animation-delay: 0s;
+    animation-duration: 15s;
+    bottom: -150px;
+}
+.boximg li:nth-child(3){
+	left: 70%;
+	width: 100px;
+	height: 100px;
+    animation-delay: 2.5s;
+    bottom: -150px;
+   
+}
+.boximg li:nth-child(5){
+	left: 65%;
+	width: 40px;
+	height: 40px;
+    animation-delay: 0s;
+    animation-duration: 10s;
+    bottom: -150px;
+}
+@keyframes animate{
+	0%{
+		transform: translateY(0) rotate(0deg);
+		opacity: 1;
+	}
+	100%{
+		transform: translateY(-800px) rotate(360deg);
+		opacity: 1;
+	}
+}
+
+</style>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+
+<body>
+	<div>
+<nav class="navbar navbar-expand-md py-4">
+
+<a class="navbar-brand text-light font-weight-bold" href="" > 
+<i>SAE INDIA</i>
+</a> 
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsenavbar">
+<span class="navbar-toggler-icon"></span>
+ </button>
+<div class="collapse navbar-collapse text-center" id="collapsenavbar">
+<ul class="navbar-nav ml-auto">
+<li class="nav-item dropdown">
+<a href="" class="nav-link text-white"> PLAY </a>
+</li>
+<li class="nav-item">
+<a href="" class="nav-link text-white"> RULES </a>
+</li>
+<li class="nav-item">
+<a href="" class="nav-link text-white"> LEADERBOARD </a>
+</li>
+      <li class="nav-item">
+<a href="" class="nav-link text-white"> FIXTURES </a>
+      </li>
+<li class="nav-item">
+<a href="" class="nav-link text-white"> SETTINGS </a>
+</li>
+<!--<li class="nav-item">
+<a href="" class="nav-link text-white"> LOGOUT </a>
+</li>-->
+
+</ul>
+
+
+
+
+
+</nav>
+</div>
+       <div class="container text-center hearderset">
+	   <h2> WHAT'S COOLER THAN A TECHNICAL QUIZ WITH MOBILE PHONES?</h2>
+	   <h1> NOTHING OF COURSE </h1>
+	   <h3>So Get Ready For It And Win Exciting Prizes </h3>
+	   <button class="btn btn-black"><b> LOG IN</b></button> 
+	   <button class="btn btn-black"><b> SIGN UP </b></button> 
+	   </div>
+<ul class="boximg">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+<script>
+
+</script>
+</body>
+</html> 
