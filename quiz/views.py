@@ -1,23 +1,28 @@
 from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 from .forms import RegistrationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from . import models
 from django.contrib.auth.models import User
 from .models import Profile,Question
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+
 
 
 
 # Create your views here.
 def index(request):
 	return render(request,'quiz/index.html')
+def index2(request):
+	return render(request,'quiz/index2.html')
 
 def signup(request):
 	if request.method=='POST':
 		form=RegistrationForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return HttpResponse("Registered Succesfully")
+			return redirect('login')
 	else:
 		form=RegistrationForm()
 	args={'form': form}
@@ -32,17 +37,17 @@ def login_view(request):
 		if user is not None:
 			if user.is_active:
 				login(request,user)
-				return redirect('index')
+				return redirect('index2')
 			else:
 				message='Not Activated'
 		else:
 			message='Invalid Login'
 	context={'message':message}
 	return render(request,'quiz/login.html',context)
-def signout(request):
+@login_required
+def logout_view(request):
 	logout(request)
-	url = reverse(":login")
-	return redirect(url, args=(),kwargs={}) 
+	
 
 
 def leaderboard(request):
@@ -79,7 +84,11 @@ def get_question(request):
 			else:
 
 				return redirect('get_question')
-	return render(request,'quiz/quizpage.html',{'round':round})
+	if user.profile.curr_round<=5:
+
+		return render(request,'quiz/quizpage.html',{'round':round})
+	else:
+		return render(request,'quiz/endpage.html')
 
 def end_page(request):
 	return render(request,'quiz/endpage.html')
