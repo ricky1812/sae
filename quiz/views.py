@@ -61,6 +61,7 @@ def get_question(request):
 	
 	user=User.objects.get(username=request.user.username)
 	round=Question.objects.get(round=user.profile.curr_round)
+	
 	if request.method=='POST':
 		answers=request.POST['answers']
 		print(answers)
@@ -73,8 +74,16 @@ def get_question(request):
 			user.profile.submit_time=timezone.now()
 			print(user.profile.submit_time)
 			user.save()	
-			return redirect('get_question')
+			if user.profile.curr_round>=5:
+				return redirect('end_page')
+			else:
+
+				return redirect('get_question')
 	return render(request,'quiz/quizpage.html',{'round':round})
+
+def end_page(request):
+	return render(request,'quiz/endpage.html')
+
 
 
 	

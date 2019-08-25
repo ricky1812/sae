@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>AUTOMANIA</title>
+    <title>TREASURE HUNT</title>
 
     <!-- Bootstrap core CSS -->
   <link href="{% static 'quiz/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -47,6 +47,8 @@
 			<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 <form method="post" action="">
 {% csrf_token %}
+<h1 class="mb-5" style="color: white; font-size: 3em; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; ">	User {{user.username}}</h1>
+<img src="{{ round.image.url }}" alt="image" width="300" height="200">
 
 
 <h1 class="mb-5" style="color: white; font-size: 3em; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; ">	Question {{round.id}}</h1>
