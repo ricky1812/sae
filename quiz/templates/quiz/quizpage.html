@@ -27,9 +27,7 @@
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
 			<a class="navbar-brand" href="{% url 'index' %}">HOME</a>
-			<h2>Time left :
-			<span id="time" class="font-normal"></span>
-		</h2>
+			
 			<a class="btn btn-primary" href="/leaderboard/">Leaderboard</a>
 		</div>
 	</nav>
@@ -48,7 +46,7 @@
 <form method="post" action="">
 {% csrf_token %}
 <h1 class="mb-5" style="color: white; font-size: 3em; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; ">	User {{user.username}}</h1>
-<img src="{{ round.image.url }}" alt="image" width="300" height="200">
+<img src="{{ round.image.url }}" alt="image not available for this question" width="300" height="200">
 
 
 <h1 class="mb-5" style="color: white; font-size: 3em; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; ">	Question {{round.id}}</h1>

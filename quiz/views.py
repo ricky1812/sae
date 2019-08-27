@@ -43,10 +43,11 @@ def login_view(request):
 		else:
 			message='Invalid Login'
 	context={'message':message}
-	return render(request,'quiz/login.html',context)
+	return render(request,'quiz/login1.html',context)
 @login_required
 def logout_view(request):
 	logout(request)
+	return HttpResponseRedirect('/')
 	
 
 
@@ -61,7 +62,7 @@ def leaderboard(request):
 			'time':i.submit_time,
 			})
 	return render(request,'quiz/leaderboard.html',{'people':people})
-
+@login_required
 def get_question(request):
 	
 	user=User.objects.get(username=request.user.username)
@@ -89,7 +90,7 @@ def get_question(request):
 		return render(request,'quiz/quizpage.html',{'round':round})
 	else:
 		return render(request,'quiz/endpage.html')
-
+@login_required
 def end_page(request):
 	return render(request,'quiz/endpage.html')
 
